@@ -49,22 +49,6 @@
       state: restarted
       name: docker
 
-  - name: Creates honeybee ssh directory
-    file:
-      path: /root/.ssh
-      state: directory
-      owner: honeybee
-      group: honeybee
-      mode: 0700
-
-  - name: Add authorized key for honeybee
-    copy:
-      src: credentials/id_rsa.pub
-      dest: /root/.ssh/authorized_keys
-      owner: honeybee
-      group: honeybee
-      mode: 0600
-
   - name: Remove swapfile from /etc/fstab
     mount:
       name: "{{ item }}"
